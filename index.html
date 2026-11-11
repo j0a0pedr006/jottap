@@ -184,6 +184,9 @@ html[lang="en"] .cover small[data-pt],html:not([lang="en"]) .cover small[data-en
 
   <div class="top">
     <span class="issue"><img class="mini" src="img/logo-runner.png" alt="" width="301" height="292"><span data-pt>Nº 01 · Portugal</span><span data-en>Issue 01 · Portugal</span></span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-set-lang="pt" aria-pressed="false">PT</button><span aria-hidden="true">|</span><button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 
   <header class="hero">
@@ -205,7 +208,7 @@ html[lang="en"] .cover small[data-pt],html:not([lang="en"]) .cover small[data-en
   <section aria-labelledby="h-covers" class="sets">
     <h2 id="h-covers">Covers</h2>
     <div class="panel video"><iframe src="https://www.youtube-nocookie.com/embed/-FD4TTqaNe8?rel=0" title="Stardust · Music Sounds Better With You (Cover)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
-    <p style="margin:0">Remakes of tracks I love, played and produced from scratch.</p>
+    <p style="margin:0" data-pt>Versões de músicas que adoro, tocadas e produzidas do zero.</p><p style="margin:0" data-en>Remakes of tracks I love, played and produced from scratch.</p>
   </section>
 
 
@@ -228,7 +231,7 @@ html[lang="en"] .cover small[data-pt],html:not([lang="en"]) .cover small[data-en
   <!-- BOOKING -->
   <section aria-labelledby="h-book">
     <div class="panel booking">
-      <h2 id="h-book" style="margin:0">Booking &amp; Contact</h2>
+      <h2 id="h-book" style="margin:0"><span data-pt>Booking &amp; Contacto</span><span data-en>Booking &amp; Contact</span></h2>
       <div class="mail" id="mail">j0ttapmusic22@gmail.com</div>
       <div class="links">
         <a class="btn primary" href="mailto:j0ttapmusic22@gmail.com?subject=Booking%20JOTTA-P"><span data-pt>Enviar email ↗</span><span data-en>Send email ↗</span></a>
@@ -253,7 +256,16 @@ html[lang="en"] .cover small[data-pt],html:not([lang="en"]) .cover small[data-en
 
 <script>
 (function(){
-  document.documentElement.lang='en';
+  var btns=document.querySelectorAll('[data-set-lang]');
+  function setLang(l){
+    document.documentElement.lang=l;
+    for(var i=0;i<btns.length;i++){btns[i].setAttribute('aria-pressed',btns[i].getAttribute('data-set-lang')===l?'true':'false')}
+    try{localStorage.setItem('jottap-lang',l)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('jottap-lang')}catch(e){}
+  var nav=(navigator.language||'en').toLowerCase();
+  setLang(saved==='pt'||saved==='en'?saved:(nav.indexOf('pt')===0?'pt':'en'));
+  for(var j=0;j<btns.length;j++){btns[j].onclick=function(){setLang(this.getAttribute('data-set-lang'))}}
   document.getElementById('copy').onclick=function(){
     var t=document.getElementById('mail').textContent.trim(), ok=document.getElementById('copied');
     function done(){ok.hidden=false;setTimeout(function(){ok.hidden=true},2000)}
