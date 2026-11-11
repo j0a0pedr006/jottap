@@ -28,6 +28,14 @@ a{color:inherit}
   display:grid;gap:26px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 14px/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
 .top a{text-decoration:none}
+.top .right{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px 14px;text-align:right}
+.lang{display:flex;gap:6px;align-items:center}
+.lang button{all:unset;cursor:pointer;padding:6px 4px;color:var(--ink-soft)}
+.lang button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.lang button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+[data-en]{display:none}
+html[lang="en"] [data-pt]{display:none}
+html[lang="en"] [data-en]{display:revert}
 header{display:grid;gap:10px;justify-items:center;text-align:center}
 header img{width:min(80%,340px);height:auto}
 .tag{margin:0;font:600 clamp(15px,3.6vw,19px)/1.3 var(--f-label);letter-spacing:.2em;text-transform:uppercase}
@@ -70,7 +78,7 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
 <body>
 <div class="page">
 
-  <div class="top"><a href="index.html">← jottap</a><span>Electronic Press Kit · 2026</span></div>
+  <div class="top"><a href="index.html">← jottap</a><div class="right"><span><span data-pt>Press kit · 2026</span><span data-en>Electronic Press Kit · 2026</span></span><div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-set-lang="pt" aria-pressed="false">PT</button><span aria-hidden="true">|</span><button type="button" data-set-lang="en" aria-pressed="false">EN</button></div></div></div>
 
   <header>
     <img src="img/logo-wordmark.png" alt="JOTTA-P" width="759" height="227">
@@ -79,17 +87,17 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
 
   <section class="panel" aria-labelledby="h-bio">
     <h2 id="h-bio">Bio</h2>
-    <p>JOTTA-P is a Portuguese DJ and producer with a soft spot for warm grooves, dusty samples and anything that makes people move. Behind the decks it's records, live instruments and good energy, always chasing the next jazzy, funky moment.</p>
+    <p data-pt>JOTTA-P é um DJ e produtor português com um fraquinho por grooves quentes, samples com pó e tudo o que põe as pessoas a mexer. Atrás dos decks há discos, instrumentos ao vivo e boa energia, sempre à procura do próximo momento jazzy e funky.</p><p data-en>JOTTA-P is a Portuguese DJ and producer with a soft spot for warm grooves, dusty samples and anything that makes people move. Behind the decks it's records, live instruments and good energy, always chasing the next jazzy, funky moment.</p>
     <dl class="facts">
-      <div class="fact" style="grid-column:1/-1"><dt>Sound</dt><dd>Groove-driven electronic music, rooted in house and disco, with detours into jazz, hip hop, soul, R&amp;B and rock</dd></div>
-      <div class="fact"><dt>Format</dt><dd>DJ set + live instruments</dd></div>
+      <div class="fact" style="grid-column:1/-1"><dt><span data-pt>Som</span><span data-en>Sound</span></dt><dd><span data-pt>Música eletrónica com groove, com raízes no house e no disco, e passagens pelo jazz, hip hop, soul, R&amp;B e rock</span><span data-en>Groove-driven electronic music, rooted in house and disco, with detours into jazz, hip hop, soul, R&amp;B and rock</span></dd></div>
+      <div class="fact"><dt><span data-pt>Formato</span><span data-en>Format</span></dt><dd><span data-pt>DJ set + instrumentos ao vivo</span><span data-en>DJ set + live instruments</span></dd></div>
       <div class="fact"><dt>Setup</dt><dd>Pioneer DDJ-FLX4 · Rekordbox</dd></div>
-      <div class="fact"><dt>Based in</dt><dd>Portugal</dd></div>
+      <div class="fact"><dt><span data-pt>Baseado em</span><span data-en>Based in</span></dt><dd>Portugal</dd></div>
     </dl>
   </section>
 
   <section class="panel" aria-labelledby="h-photos">
-    <h2 id="h-photos">Press photos</h2>
+    <h2 id="h-photos"><span data-pt>Fotos de imprensa</span><span data-en>Press photos</span></h2>
     <div class="photos">
       <img src="img/press-guitar.jpg" alt="JOTTA-P playing electric guitar at the DJ table by the river">
       <img src="img/press-sunset.jpg" alt="JOTTA-P at sunset with headphones and sunglasses, valley behind">
@@ -97,7 +105,7 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
       <img class="span2" src="img/press-hill.jpg" alt="JOTTA-P at the DJ table on a hilltop over a forested valley at sunset">
       <img src="img/press-decks.jpg" alt="JOTTA-P mixing on the Pioneer DDJ-FLX4 by the river">
     </div>
-    <p class="note">Free to use for promotion of JOTTA-P. High-resolution files on request.</p>
+    <p class="note"><span data-pt>Livres para usar na promoção de JOTTA-P. Ficheiros em alta resolução a pedido.</span><span data-en>Free to use for promotion of JOTTA-P. High-resolution files on request.</span></p>
   </section>
 
   <section class="panel" aria-labelledby="h-logos">
@@ -106,13 +114,13 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
       <figure><img src="img/logo-wordmark.png" alt="JOTTAP wordmark"></figure>
       <figure><img src="img/logo-runner.png" alt="JOTTA-P running character"></figure>
     </div>
-    <p class="note">PNG files with transparent background available on request.</p>
+    <p class="note"><span data-pt>Ficheiros PNG com fundo transparente disponíveis a pedido.</span><span data-en>PNG files with transparent background available on request.</span></p>
   </section>
 
   <section class="panel set" aria-labelledby="h-set">
-    <h2 id="h-set">Latest set</h2>
-    <p><strong>Riverside Grooves</strong>: live DJ and electric guitar set by the river in Portugal, French Touch and Disco House.</p>
-    <a class="watch" href="https://youtu.be/yJU1groaa2w" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+    <h2 id="h-set"><span data-pt>Último set</span><span data-en>Latest set</span></h2>
+    <p><strong>Riverside Grooves</strong>: <span data-pt>DJ set e guitarra elétrica ao vivo junto ao rio, em Portugal. French Touch e Disco House.</span><span data-en>live DJ and electric guitar set by the river in Portugal, French Touch and Disco House.</span></p>
+    <a class="watch" href="https://youtu.be/yJU1groaa2w" target="_blank" rel="noopener"><span data-pt>Ver no YouTube ↗</span><span data-en>Watch on YouTube ↗</span></a>
     <ol class="tl" aria-label="Selected tracks">
       <li><time>00:00</time><span>Daft Punk · Get Lucky (Disco House remix)</span></li>
       <li><time>02:58</time><span>Jamiroquai · Cosmic Girl (Dimitri From Paris Remix)</span></li>
@@ -124,30 +132,30 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
   </section>
 
   <section class="panel" aria-labelledby="h-rider">
-    <h2 id="h-rider">Technical rider</h2>
+    <h2 id="h-rider"><span data-pt>Rider técnico</span><span data-en>Technical rider</span></h2>
     <div class="cols">
       <div>
-        <h3>JOTTA-P brings</h3>
+        <h3><span data-pt>JOTTA-P leva</span><span data-en>JOTTA-P brings</span></h3>
         <ul>
-          <li>Pioneer DDJ-FLX4 controller + laptop</li>
-          <li>Live instruments + audio interface (guitar, bass, MIDI keys or e-drums, depending on the gig)</li>
-          <li>Headphones and all cables to the controller</li>
+          <li><span data-pt>Controlador Pioneer DDJ-FLX4 + portátil</span><span data-en>Pioneer DDJ-FLX4 controller + laptop</span></li>
+          <li><span data-pt>Instrumentos ao vivo + interface de áudio (guitarra, baixo, teclado MIDI ou bateria eletrónica, conforme o concerto)</span><span data-en>Live instruments + audio interface (guitar, bass, MIDI keys or e-drums, depending on the gig)</span></li>
+          <li><span data-pt>Auscultadores e todos os cabos para o controlador</span><span data-en>Headphones and all cables to the controller</span></li>
         </ul>
       </div>
       <div>
-        <h3>Venue provides</h3>
+        <h3><span data-pt>O espaço fornece</span><span data-en>Venue provides</span></h3>
         <ul>
-          <li>Stable table, about 1.5 m wide</li>
-          <li>2 power sockets at the booth</li>
-          <li>Stereo line input to the PA (2 × jack or XLR)</li>
-          <li>Booth monitor</li>
+          <li><span data-pt>Mesa estável, com cerca de 1,5 m de largura</span><span data-en>Stable table, about 1.5 m wide</span></li>
+          <li><span data-pt>2 tomadas junto à cabine</span><span data-en>2 power sockets at the booth</span></li>
+          <li><span data-pt>Entrada de linha estéreo para o PA (2 × jack ou XLR)</span><span data-en>Stereo line input to the PA (2 × jack or XLR)</span></li>
+          <li><span data-pt>Monitor de cabine</span><span data-en>Booth monitor</span></li>
         </ul>
       </div>
     </div>
   </section>
 
   <section class="panel" aria-labelledby="h-links">
-    <h2 id="h-links">Listen &amp; follow</h2>
+    <h2 id="h-links"><span data-pt>Ouvir e seguir</span><span data-en>Listen &amp; follow</span></h2>
     <div class="links">
       <a class="btn" href="https://youtube.com/@j0ttap" target="_blank" rel="noopener">YouTube ↗</a>
       <a class="btn" href="https://on.soundcloud.com/sZhmPsqnejLGSjCFJa" target="_blank" rel="noopener">SoundCloud ↗</a>
@@ -157,15 +165,29 @@ ol.tl time{font-variant-numeric:tabular-nums;color:var(--ink-soft)}
   </section>
 
   <section class="panel" aria-labelledby="h-contact">
-    <h2 id="h-contact">Booking &amp; Contact</h2>
+    <h2 id="h-contact"><span data-pt>Booking e contactos</span><span data-en>Booking &amp; Contact</span></h2>
     <div class="mail">j0ttapmusic22@gmail.com</div>
     <div class="links">
-      <a class="btn primary" href="mailto:j0ttapmusic22@gmail.com?subject=Booking%20JOTTA-P">Send email ↗</a>
-      <a class="btn" href="https://www.instagram.com/jotta_p_wav" target="_blank" rel="noopener">Instagram DM ↗</a>
+      <a class="btn primary" href="mailto:j0ttapmusic22@gmail.com?subject=Booking%20JOTTA-P"><span data-pt>Enviar email ↗</span><span data-en>Send email ↗</span></a>
+      <a class="btn" href="https://www.instagram.com/jotta_p_wav" target="_blank" rel="noopener"><span data-pt>Mensagem no Instagram ↗</span><span data-en>Instagram DM ↗</span></a>
     </div>
   </section>
 
   <p class="fine">© 2026 JOTTA-P</p>
 </div>
+<script>
+(function(){
+  var btns=document.querySelectorAll('[data-set-lang]');
+  function setLang(l){
+    document.documentElement.lang=l;
+    for(var i=0;i<btns.length;i++){btns[i].setAttribute('aria-pressed',btns[i].getAttribute('data-set-lang')===l?'true':'false')}
+    try{localStorage.setItem('jottap-lang',l)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('jottap-lang')}catch(e){}
+  var nav=(navigator.language||'en').toLowerCase();
+  setLang(saved==='pt'||saved==='en'?saved:(nav.indexOf('pt')===0?'pt':'en'));
+  for(var j=0;j<btns.length;j++){btns[j].onclick=function(){setLang(this.getAttribute('data-set-lang'))}}
+})();
+</script>
 </body>
 </html>
