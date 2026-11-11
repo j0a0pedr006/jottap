@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JOTTA-P</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="JOTTA-P: DJ and producer. Jazzy funky tunes. Sets, lançamentos, press kit e booking.">
+<meta property="og:title" content="JOTTA-P">
+<meta property="og:description" content="Jazzy funky tunes. Live sets, booking and contact.">
+<meta property="og:image" content="img/avatar.jpg">
+<link rel="icon" href="img/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: uma coluna estreita como uma tira de BD; cada secção é uma vinheta com traço a tinta, legendas em máquina de escrever. */
+:root{
+  --paper:#efe4d2;      /* papel de BD envelhecido (cor do avatar) */
+  --paper-2:#e6d8c2;
+  --ink:#1a1614;        /* tinta */
+  --ink-soft:#4a403a;
+  --orange:#e5733a;     /* laranja do avatar */
+  --night:#1f2440;      /* céu do banner */
+  --f-display:"Anton","Impact","Arial Narrow",sans-serif;
+  --f-type:"Courier Prime","Courier New",ui-monospace,monospace;
+  --f-label:"Barlow Condensed","Arial Narrow",sans-serif;
+  --stroke:3px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font:400 17px/1.6 var(--f-type);
+  background-image:
+    radial-gradient(rgba(26,22,20,.07) 1px, transparent 1.2px),
+    radial-gradient(rgba(229,115,58,.05) 1px, transparent 1.2px);
+  background-size:6px 6px, 9px 9px;
+  background-position:0 0, 3px 4px;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+.page{
+  max-width:720px;margin:0 auto;
+  padding-block:20px 40px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:grid;gap:28px;
+}
+
+/* topo */
+.top{display:flex;justify-content:space-between;align-items:center;font:600 15px/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase}
+.lang{display:flex;gap:6px;align-items:center}
+.lang button{all:unset;cursor:pointer;padding:6px 4px;color:var(--ink-soft)}
+.lang button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.issue{color:var(--ink-soft)}
+
+.hero{display:grid;gap:18px;justify-items:center;text-align:center;padding-top:8px}
+.hero h1{margin:0;width:100%}
+.banner{margin:0;overflow:hidden;line-height:0;position:relative}
+.banner img{width:100%;height:auto}
+.banner::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(rgba(0,0,0,.12) .8px,transparent 1px);background-size:3px 3px;mix-blend-mode:multiply}
+.logos{display:flex;align-items:center;justify-content:center;gap:clamp(8px,2.4vw,16px)}
+.logos .badge{width:clamp(100px,28vw,180px);height:auto;flex:none}
+.logos .word{width:min(56vw,400px);height:auto;min-width:0}
+.logos .tile{display:grid;place-items:center;background:var(--orange);min-width:0}
+.logos .round{border-radius:50%;aspect-ratio:1;width:clamp(110px,30vw,190px);flex:none;padding:clamp(12px,3.4vw,22px)}
+.logos .rect{border-radius:10px;flex:1 1 auto;max-width:440px;padding:clamp(16px,4vw,28px) clamp(14px,3.4vw,26px)}
+.logos .badge{width:100%;height:auto}
+.logos .word{width:min(100%,520px);height:auto}
+.issue{display:flex;align-items:center;gap:10px}
+.issue .mini{width:38px;height:auto}
+.sign{width:96px;height:auto}
+.tagline{margin:0;font:600 clamp(15px,3.6vw,19px)/1.3 var(--f-label);letter-spacing:.2em;text-transform:uppercase}
+.tagline span{color:var(--orange)}
+
+/* vinheta */
+.panel{
+  border:var(--stroke) solid var(--ink);
+  background:var(--paper);
+  box-shadow:6px 6px 0 var(--ink);
+  position:relative;
+}
+.caption{
+  display:inline-block;
+  background:#f6d84a; /* caixa de legenda amarela de BD */
+  border:2px solid var(--ink);
+  font:700 12px/1 var(--f-type);
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 10px;
+  position:absolute;top:-14px;left:14px;z-index:2;
+}
+section h2{
+  margin:0 0 14px;
+  font:400 clamp(30px,8vw,44px)/1 var(--f-display);
+  letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;
+}
+
+/* EP */
+.ep{display:grid;grid-template-columns:1fr 1fr;background:var(--night);color:var(--paper)}
+.ep-art{border-right:var(--stroke) solid var(--ink);aspect-ratio:1;max-width:100%;overflow:hidden;background:var(--orange)}
+.ep-art img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.ep-body{padding:28px 18px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ep-body .kicker{font:600 13px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.ep-body h3{margin:0;font:400 clamp(26px,6.4vw,40px)/.95 var(--f-display);text-transform:uppercase}
+.ep-body p{margin:0;font-size:14px;line-height:1.5}
+.when{margin-top:auto;border-top:2px dashed rgba(239,228,210,.5);padding-top:10px;font:700 13px/1.3 var(--f-type);letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:520px){.ep{grid-template-columns:1fr}.ep-art{border-right:0;border-bottom:var(--stroke) solid var(--ink)}}
+
+/* sets */
+.video{display:block;text-decoration:none;color:var(--paper);background:var(--night);aspect-ratio:16/9;max-width:100%;overflow:hidden;position:relative}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video .art{position:absolute;inset:0;background:
+  radial-gradient(120% 70% at 50% 120%, #f08a4b 0%, #b0533a 28%, transparent 60%),
+  linear-gradient(#1f2440,#3a3f66 60%,#1f2440);}
+.video .art::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.25) 1px,transparent 1.3px);background-size:5px 5px}
+.video .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--paper);border:var(--stroke) solid var(--ink);display:grid;place-items:center;box-shadow:4px 4px 0 var(--ink);transition:transform .15s}
+.video:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.video .play::before{content:"";border-left:22px solid var(--ink);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.video .label{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;font:700 14px/1.3 var(--f-type);background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.sets{display:grid;gap:12px}
+.setlist{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.setlist li{border:2px solid var(--ink);padding:3px 9px;font:600 14px/1.3 var(--f-label);letter-spacing:.06em;text-transform:uppercase;background:var(--paper-2)}
+
+/* lançamentos */
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cover{display:grid;gap:8px;text-align:center;font:600 15px/1.2 var(--f-label);letter-spacing:.06em;text-transform:uppercase}
+.cover .sq{aspect-ratio:1;max-width:100%;border:var(--stroke) solid var(--ink);display:grid;place-items:center;font:400 clamp(22px,7vw,40px)/1 var(--f-display);position:relative;overflow:hidden}
+.cover small{display:block;font:400 12px/1.2 var(--f-type);letter-spacing:.04em;text-transform:none;color:var(--ink-soft)}
+.c1{background:var(--orange)}
+.c2{background:var(--night);color:var(--paper)}
+.c3{background:var(--paper-2);background-image:repeating-linear-gradient(45deg,rgba(26,22,20,.12) 0 2px,transparent 2px 9px)}
+.lock{position:absolute;bottom:6px;right:8px;font:700 11px/1 var(--f-type)}
+
+/* attic */
+.attic{padding:26px 18px 18px;display:grid;gap:12px}
+.attic p{margin:0}
+.bubble{position:relative;background:#fff8ec;border:2px solid var(--ink);border-radius:18px;padding:12px 16px;font-style:italic;max-width:44ch}
+.bubble::after{content:"";position:absolute;left:28px;bottom:-12px;border:6px solid transparent;border-top:8px solid var(--ink);border-left:8px solid var(--ink)}
+
+/* about */
+.about{display:grid;grid-template-columns:200px 1fr;gap:0}
+.about figure{margin:0;border-right:var(--stroke) solid var(--ink);background:#000}
+.about figure img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;aspect-ratio:1}
+.about .txt{padding:26px 18px 18px;display:grid;gap:12px;align-content:start;min-width:0}
+.about p{margin:0;max-width:62ch}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--paper);padding:9px 14px;font:700 14px/1 var(--f-type);text-decoration:none;box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s;cursor:pointer;color:var(--ink)}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--orange)}
+.btn[aria-disabled="true"]{opacity:.55;box-shadow:none;cursor:default}
+@media (max-width:560px){.about{grid-template-columns:1fr}.about figure{border-right:0;border-bottom:var(--stroke) solid var(--ink)}.about figure img{aspect-ratio:4/3}}
+
+/* booking */
+.booking{padding:26px 18px 20px;display:grid;gap:14px}
+.mail{font:700 clamp(16px,4.6vw,22px)/1.2 var(--f-type);word-break:break-all;user-select:all}
+.copied{font:600 14px var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+
+/* rodapé */
+footer{display:grid;gap:16px;justify-items:center;padding-top:6px}
+.social{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.social a{width:48px;height:48px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;background:var(--paper);transition:background .15s}
+.social a:hover{background:var(--orange)}
+.social svg{width:22px;height:22px;fill:var(--ink)}
+.fine{font:400 12px/1.4 var(--f-type);color:var(--ink-soft);text-align:center}
+
+[data-en]{display:none}
+html[lang="en"] [data-pt]{display:none}
+html[lang="en"] [data-en]{display:revert}
+.cover small[data-pt],html[lang="en"] .cover small[data-en]{display:block}
+html[lang="en"] .cover small[data-pt],html:not([lang="en"]) .cover small[data-en]{display:none}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <span class="issue"><img class="mini" src="img/logo-runner.png" alt="" width="301" height="292"><span data-pt>Nº 01 · Portugal</span><span data-en>Issue 01 · Portugal</span></span>
+  </div>
+
+  <header class="hero">
+    <h1 class="logos"><img class="word" src="img/logo-wordmark.png" alt="JOTTA-P" width="759" height="227"></h1>
+    <p class="tagline">Jazzy <span>·</span> Funky <span>·</span> Tunes</p>
+  </header>
+
+  <!-- SETS -->
+  <section aria-labelledby="h-sets" class="sets">
+    <h2 id="h-sets"><span data-pt>Último set</span><span data-en>Latest set</span></h2>
+    <div class="panel video"><iframe src="https://www.youtube-nocookie.com/embed/yJU1groaa2w?rel=0" title="Riverside Grooves · Live DJ &amp; Guitar Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+    <p style="margin:0" data-pt>DJ set e guitarra elétrica ao vivo junto ao rio, em Portugal. French Touch e Disco House.</p><p style="margin:0" data-en>Live DJ and electric guitar set by the river in Portugal. French Touch and Disco House.</p>
+    <ul class="setlist" aria-label="In the set">
+      <li>Daft Punk</li><li>Jamiroquai</li><li>Parcels</li><li>Stardust</li><li>Diana Ross</li><li>ELO</li><li>ANOTR</li><li>Dua Lipa</li>
+    </ul>
+  </section>
+
+  <!-- COVERS -->
+  <section aria-labelledby="h-covers" class="sets">
+    <h2 id="h-covers">Covers</h2>
+    <div class="panel video"><iframe src="https://www.youtube-nocookie.com/embed/-FD4TTqaNe8?rel=0" title="Stardust · Music Sounds Better With You (Cover)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+    <p style="margin:0">Remakes of tracks I love, played and produced from scratch.</p>
+  </section>
+
+
+
+
+
+  <!-- ABOUT -->
+  <section aria-labelledby="h-about">
+    <div class="panel about">
+      <figure><img src="img/retrato.jpg" alt="Retrato de JOTTA-P"></figure>
+      <div class="txt">
+        <h2 id="h-about" style="margin:0"><span data-pt>Sobre</span><span data-en>About</span></h2>
+        <p data-pt>JOTTA-P é DJ e produtor português. Cruza o French Touch de Daft Punk, Roulé e Alan Braxe com Disco, Funk e Jazz, em sets híbridos onde a mistura digital se junta à guitarra, ao baixo e à percussão ao vivo. Toca em vinil num Technics SL-D2 e produz em Ableton.</p>
+        <p data-en>JOTTA-P is a Portuguese DJ and producer with a soft spot for warm grooves, dusty samples and anything that makes people move. Behind the decks it's records, live instruments and good energy, always chasing the next jazzy, funky moment.</p>
+        <div class="links"><a class="btn" href="epk.html">Press kit (EPK) ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section aria-labelledby="h-book">
+    <div class="panel booking">
+      <h2 id="h-book" style="margin:0">Booking &amp; Contact</h2>
+      <div class="mail" id="mail">j0ttapmusic22@gmail.com</div>
+      <div class="links">
+        <a class="btn primary" href="mailto:j0ttapmusic22@gmail.com?subject=Booking%20JOTTA-P"><span data-pt>Enviar email ↗</span><span data-en>Send email ↗</span></a>
+        <button class="btn" type="button" id="copy"><span data-pt>Copiar email</span><span data-en>Copy email</span></button>
+        <a class="btn" href="https://www.instagram.com/jotta_p_wav" target="_blank" rel="noopener"><span data-pt>Mensagem no Instagram ↗</span><span data-en>Instagram DM ↗</span></a>
+        <span class="copied" id="copied" hidden><span data-pt>Copiado</span><span data-en>Copied</span></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img class="sign" src="img/logo-runner.png" alt="" width="301" height="292">
+    <nav class="social" aria-label="Social">
+      <a href="https://www.instagram.com/jotta_p_wav" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2ZM12 2.2c-2.7 0-3 0-4 .1-3.6.2-5.5 2.1-5.7 5.7-.1 1-.1 1.3-.1 4s0 3 .1 4c.2 3.6 2.1 5.5 5.7 5.7 1 .1 1.3.1 4 .1s3 0 4-.1c3.6-.2 5.5-2.1 5.7-5.7.1-1 .1-1.3.1-4s0-3-.1-4c-.2-3.6-2.1-5.5-5.7-5.7-1-.1-1.3-.1-4-.1Zm0 1.8c2.6 0 2.9 0 4 .1 2.6.1 3.8 1.4 3.9 3.9.1 1 .1 1.3.1 4s0 2.9-.1 4c-.1 2.5-1.3 3.8-3.9 3.9-1 .1-1.3.1-4 .1s-2.9 0-4-.1c-2.6-.1-3.8-1.4-3.9-3.9-.1-1-.1-1.3-.1-4s0-2.9.1-4C4.2 5.5 5.4 4.2 8 4.1c1-.1 1.3-.1 4-.1Z"/></svg></a>
+      <a href="https://www.tiktok.com/@jottap087" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2-2.8V9a6.2 6.2 0 1 0 5.3 6.2V8.6a7.8 7.8 0 0 0 4.4 1.4V6.7a4.5 4.5 0 0 1-4.4-4.7Z"/></svg></a>
+      <a href="https://youtube.com/@j0ttap" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg></a>
+      <a href="https://on.soundcloud.com/sZhmPsqnejLGSjCFJa" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24"><path d="M1 14.5h.8v3.2H1zm1.7-1.4h.8v4.6h-.8zm1.7-.6h.8v5.2h-.8zm1.7-.8h.8v6h-.8zm1.7-.9h.8v6.9h-.8zm1.7-1.4h.8v8.3h-.8zm1.7-.7c.5-.2 1.1-.3 1.7-.3a5 5 0 0 1 5 4.6 2.9 2.9 0 1 1 .6 5.7H11.4V8.7Z"/></svg></a>
+    </nav>
+    <p class="fine">© 2026 JOTTA-P</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  document.documentElement.lang='en';
+  document.getElementById('copy').onclick=function(){
+    var t=document.getElementById('mail').textContent.trim(), ok=document.getElementById('copied');
+    function done(){ok.hidden=false;setTimeout(function(){ok.hidden=true},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+  };
+})();
+</script>
+</body>
+</html>
